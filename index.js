@@ -5,10 +5,6 @@ function handlesearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handlesearchSubmit);
-
-searchCity("Paris");
 
 function searchCity(city) {
   let apiKey = "8f0ab40o57b12e2t3b934b3b4137cfbc";
@@ -31,7 +27,7 @@ function updateWeather(response) {
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
-  windspeedElement.innerHTML = `${response.data.windspeed}km/h`;
+  windspeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
   iconElement.innerHTML = `<img src ="${response.data.condition.icon_url}" class="weather-app-icon"/>`;
 
@@ -101,3 +97,8 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handlesearchSubmit);
+
+searchCity("Paris");
