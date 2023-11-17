@@ -11,6 +11,10 @@ function searchCity(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit="metric"`;
   axios.get(apiUrl).then(updateWeather);
 }
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handlesearchSubmit);
+
+searchCity("Paris");
 
 function updateWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -98,7 +102,3 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHtml;
 }
 
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handlesearchSubmit);
-
-searchCity("Paris");
